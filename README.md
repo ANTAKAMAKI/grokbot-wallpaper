@@ -1,0 +1,27 @@
+# Grok Bot 换背景
+
+一个可复用技能和零 npm 依赖的 Node.js 22+ CLI，在 Mac 上用用户图片创建本机壁纸覆盖层。官方设置只有 Light/Dark/Accent；这不是官方主题，不修改应用包、app.asar 或签名。
+
+在本目录执行：
+
+```bash
+node scripts/grokbot-wallpaper.mjs help
+node scripts/grokbot-wallpaper.mjs status
+node scripts/grokbot-wallpaper.mjs apply "/absolute/path/photo.png" --opacity 0.45 --dark
+node scripts/grokbot-wallpaper.mjs apply "/absolute/path/photo.jpg" --opacity 0.6 --light
+node scripts/grokbot-wallpaper.mjs restore
+```
+
+首次未开启调试端口时，apply 以状态码 2 退出，不关闭应用。保存当前工作并确认允许重启后，再执行：
+
+```bash
+node scripts/grokbot-wallpaper.mjs apply "/absolute/path/photo.png" --relaunch
+```
+
+重启会关闭当前聊天窗口。已经开启调试端口时只注入。支持 PNG/JPG/JPEG/WebP；超过 4MB 会尝试用 sips 缩小为 JPEG，否则明确报错。透明度范围 0.15–0.85，越大照片越明显，默认 0.45、深色。
+
+图片副本与状态保存在 `~/Library/Application Support/grokbot-wallpaper/`，原图保留。图片通过 data URL 嵌入，不发布到网络。覆盖层使用运行时表面识别，实际效果随界面布局变化；当前进程重载时注册的脚本用于重新应用，完全退出应用后失效，新窗口可再次运行 apply。restore 会恢复记录的样式并移除已记录的重载脚本，不删除图片。
+
+安全：本机调试端口允许同一电脑上的其他进程访问 Grok Bot 窗口，只使用 `127.0.0.1:19222`，不要端口转发。远程助手应把 helper 和图片复制到用户 Mac 后在 Mac 上执行，不能在远程机器操作该端口。
+
+助手操作步骤见 [SKILL.md](SKILL.md)。
