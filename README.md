@@ -25,7 +25,7 @@
 - 目前只支持 **Mac** 上的 Grok Bot 桌面应用。
 - 这是本机覆盖层，不是官方主题，也不会改官方应用、安装包或签名。
 - 第一次安装时，可能需要重启一次 Grok Bot，当前聊天窗口会关掉。之后换图、调透明度都不用再重启。
-- 完全退出应用后，覆盖层会先消失；登录后助手会自动启动，如果 Grok Bot 带着本机调试口打开，会尽量自动换上上次的壁纸。
+- 完全退出应用后，覆盖层会先消失。登录后只启动助手，不会自己打开 Grok Bot。你再打开应用时，助手会按上次的图片、透明度和深浅恢复聊天背景；换聊天、返回、重新加载时也会跟着恢复。这不是定时检查。
 - 调试接口只绑在本机 `127.0.0.1`，不要做端口转发。
 
 图片副本存在 `~/Library/Application Support/grokbot-wallpaper/`，原图不会被删，也不会传到网上。默认透明度是 0.9，可在 0.15 到 1 之间调。
@@ -52,6 +52,6 @@ node scripts/grokbot-wallpaper.mjs apply "/absolute/path/photo.png" --relaunch
 node scripts/grokbot-wallpaper.mjs restore
 ```
 
-`apply` 成功后，会装上登录自启。也可以单独运行 `watch` 或 `panel`。
+`apply` 成功后，会装上登录自启。也可以单独运行 `watch` 或 `panel`。同一时间只保留一个 `watch`。`status` 不能代替看屏幕确认壁纸是否还在。
 
 给助手看的详细步骤在 [SKILL.md](SKILL.md)。

@@ -1,0 +1,30 @@
+{
+  "artifact": "scripts/grokbot-wallpaper.mjs",
+  "sha256": "4cdd9419d6b41af202ac33b0d77eb0ace4d950cd0c5ea4036b9916e51c90f796",
+  "bytes": 84892,
+  "replaces": {
+    "commit": "d002d73038b77a4db569de8186215f9d3eced8ce",
+    "sha256": "faeae1b99e4b1577c53b7b416c4937b1e64e38633237e8f8a640f293160288c9",
+    "bytes": 36197
+  },
+  "installPath": "/Users/Admin1/Library/Application Support/grokbot-wallpaper/scripts/grokbot-wallpaper.mjs",
+  "node": "/Users/Admin1/.local/node-v26.13.1-darwin-arm64/bin/node",
+  "image": {
+    "path": "/Users/Admin1/Library/Application Support/grokbot-wallpaper/selected-wallpaper.png",
+    "sha256": "0c1591687739b76dba495df86e15e50b46168187d4ebdc8b3c5ffc37be77f0d3",
+    "bytes": 3298387
+  },
+  "appearance": "dark",
+  "opacity": 0.94,
+  "debug": "127.0.0.1:19222",
+  "panel": "127.0.0.1:19223",
+  "newDependencies": [],
+  "newPermissions": [],
+  "cloudTest": {
+    "command": "node --test test/wallpaper.test.mjs",
+    "node": "v22.23.4",
+    "platform": "linux",
+    "passed": 27,
+    "macVisualAcceptance": false
+  }
+}
